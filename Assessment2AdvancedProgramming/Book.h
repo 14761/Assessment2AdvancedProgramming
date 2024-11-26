@@ -5,10 +5,10 @@ class Book
 {
 public:
 	Book();
-	std::string Title = "";
-	std::string Author = "";
-	std::string ISBN = "";
-	bool Availability = false;
+	std::string Title;
+	std::string Author;
+	std::string ISBN;
+	bool Availability;
 
 	void setBookDtails();
 	void displayBookDetails();

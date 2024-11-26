@@ -1,27 +1,34 @@
 #include "Book.h"
+#include <string>
 
-void setBookDtails() {
-	std::cout << "Enter Title" << std::endl;
-	std::cin >> Book::Title;
-	std::cout << "Enter Author" << std::endl;
-	std::cin >> Book::Author;
-	std::cout << "Enter ISBN" << std::endl;
+void Book::setBookDtails() {
+	std::cout << "Enter Title: ";
+	std::getline(std::cin, Book::Title);
+	std::cout << std::endl;
+	std::cout << "Enter Author: ";
+	std::getline(std::cin, Book::Author);
+	std::cout << std::endl;
+	std::cout << "Enter ISBN: ";
 	std::cin >> Book::ISBN;
+	std::cout << std::endl;
 }
 
-void displayBookDetails() {
-	std::cout << "Title: " << Book::Title << std::endl << "Author: " << Book::Author << std::endl << "ISBN: " << Book::ISBN << std::endl;
+void Book::displayBookDetails() {
+	std::cout << "Title: " << Title << std::endl << "Author: " << Author << std::endl << "ISBN: " << ISBN << std::endl << "Availability: " << Availability << std::endl;
 }
 
-void borrowBook() {
-
+void Book::borrowBook() {
+	Book::Availability = false;
 }
 
-void returnBook() {
-
+void Book::returnBook() {
+	Book::Availability = true;
 }
 
-Book::Book()
-{
+Book::Book() {
+	Book::Author = "";
+	Book::Title = "";
+	Book::ISBN = "";
+	Book::Availability = false;
 }
 
