@@ -3,19 +3,69 @@
 
 #include <iostream>
 #include "Book.h"
+#include <vector>
+#include <string>
+
+void lookForISBN(std::vector<Book> lvector);
 
 int main()
 {
+    std::string isbn;
     std::cout << std::boolalpha;
-    Book principito;
+    //Test book class
+    
+    /*Book principito;
     principito.displayBookDetails();
     principito.setBookDtails();
     principito.displayBookDetails();
     principito.returnBook();
     principito.displayBookDetails();
     principito.borrowBook();
-    principito.displayBookDetails();
+    principito.displayBookDetails();*/
 
+    Book a1984("1984", "George Orwell", "9781328869333", false);
+    Book AstrophysicsforPeopleinaHurry("Astrophysics for People in a Hurry", "Neil deGrasse Tyson", "9780393609394", true);
+    Book Necronomicon("Necronomicon", "H.P. Lovecraft", "9780575081567", true);
+    Book Oathbringer("Oathbringer", "Brandon Sanderson", "9781250297143", true);
+    Book OneHundredYearsOfSolitude("One Hundred Years of Solitude", "Gabriel Garcia Marquez", "One Hundred Years of Solitude", false);
+
+    //a1984.displayBookDetails();
+
+    std::vector<Book> library;
+    
+    library.push_back(a1984);
+    library.push_back(AstrophysicsforPeopleinaHurry);
+    library.push_back(Necronomicon);
+    library.push_back(Oathbringer);
+    library.push_back(OneHundredYearsOfSolitude);
+
+    //std::cout << library[1].Author;
+
+
+
+}
+
+void lookForISBN(std::vector<Book> lvector) {
+    std::string isbn;
+    std::cout << "Enter ISBN number: ";
+    std::cin >> isbn;
+    if (isbn == "0")
+    {
+        return;
+    }
+    for (int i = 0; i <= lvector.size(); ++i)
+    {
+        if (lvector[i].ISBN == isbn)
+        {
+            return lvector[i].displayBookDetails();
+        }
+
+        if (i == lvector.size())
+        {
+            std::cout << "Book not in library" << std::endl;
+        }
+
+    }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

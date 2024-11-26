@@ -25,10 +25,9 @@ void Book::returnBook() {
 	Book::Availability = true;
 }
 
-Book::Book() {
-	Book::Author = "";
-	Book::Title = "";
-	Book::ISBN = "";
-	Book::Availability = false;
+Book::Book()
+{
 }
+
+Book::Book(const std::string title = "", const std::string author = "", const std::string isbn = "", const bool availability = true) : Title(title), Author(author), ISBN(isbn), Availability(availability){}
 
