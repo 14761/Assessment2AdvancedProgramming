@@ -41,6 +41,7 @@ int main()
 
     //std::cout << library[1].Author;
 
+    lookForISBN(library);
 
 
 }
@@ -51,21 +52,17 @@ void lookForISBN(std::vector<Book> lvector) {
     std::cin >> isbn;
     if (isbn == "0")
     {
+        std::cout << "Finishing program";
         return;
     }
-    for (int i = 0; i <= lvector.size(); ++i)
+    for (std::vector<Book>::iterator it = lvector.begin(); it != lvector.end(); ++it)
     {
-        if (lvector[i].ISBN == isbn)
+        if (it->ISBN == isbn)
         {
-            return lvector[i].displayBookDetails();
+            return it->displayBookDetails();
         }
-
-        if (i == lvector.size())
-        {
-            std::cout << "Book not in library" << std::endl;
-        }
-
     }
+    std::cout << "Book not in library" << std::endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
