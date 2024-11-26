@@ -2,19 +2,31 @@
 #include <string>
 
 void Book::setBookDtails() {
+	std::string title;
+	std::string author;
+	std::string isbn;
+	time_t dateAdd;
+
 	std::cout << "Enter Title: ";
-	std::getline(std::cin, Book::Title);
+	std::getline(std::cin, title);
+	if (title != "") Book::Title = title;
 	std::cout << std::endl;
 	std::cout << "Enter Author: ";
-	std::getline(std::cin, Book::Author);
+	std::getline(std::cin, author);
+	if (author != "") Book::Author = author;
 	std::cout << std::endl;
 	std::cout << "Enter ISBN: ";
-	std::cin >> Book::ISBN;
+	std::cin >> isbn;
+	if (isbn != "") Book::ISBN = isbn;
+	std::cout << std::endl;
+	std::cout << "Enter timestamp (type 0 if don't know): ";
+	std::cin >> dateAdd;
+	if (dateAdd != 0) Book::DateAdd = dateAdd;
 	std::cout << std::endl;
 }
 
 void Book::displayBookDetails() {
-	std::cout << "Title: " << Title << std::endl << "Author: " << Author << std::endl << "ISBN: " << ISBN << std::endl << "Availability: " << Availability << std::endl;
+	std::cout << "Title: " << Title << std::endl << "Author: " << Author << std::endl << "ISBN: " << ISBN << std::endl << "Availability: " << Availability << std::endl << "Date added: " << ctime(&DateAdd);
 }
 
 void Book::borrowBook() {
@@ -25,9 +37,9 @@ void Book::returnBook() {
 	Book::Availability = true;
 }
 
-Book::Book()
-{
-}
+Book::Book() {};
 
-Book::Book(const std::string title = "", const std::string author = "", const std::string isbn = "", const bool availability = true) : Title(title), Author(author), ISBN(isbn), Availability(availability){}
+Book::Book(const std::string title = "", const std::string author = "", const std::string isbn = "", const bool availability = true) : Title(title), Author(author), ISBN(isbn), Availability(availability) {
+	DateAdd = time(NULL);
+}
 

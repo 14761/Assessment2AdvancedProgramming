@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <ctime>
 
 class Book
 {
@@ -11,6 +12,7 @@ public:
 	std::string Author;
 	std::string ISBN;
 	bool Availability;
+	time_t DateAdd;
 
 	void setBookDtails();
 	void displayBookDetails();

@@ -5,6 +5,7 @@
 #include "Book.h"
 #include <vector>
 #include <string>
+#include <ctime>
 
 void lookForISBN(std::vector<Book> lvector);
 
@@ -29,19 +30,23 @@ int main()
     Book Oathbringer("Oathbringer", "Brandon Sanderson", "9781250297143", true);
     Book OneHundredYearsOfSolitude("One Hundred Years of Solitude", "Gabriel Garcia Marquez", "One Hundred Years of Solitude", false);
 
-    //a1984.displayBookDetails();
+    a1984.displayBookDetails();
 
-    std::vector<Book> library;
+    a1984.setBookDtails();
+
+    a1984.displayBookDetails();
+
+    /*std::vector<Book> library;
     
     library.push_back(a1984);
     library.push_back(AstrophysicsforPeopleinaHurry);
     library.push_back(Necronomicon);
     library.push_back(Oathbringer);
-    library.push_back(OneHundredYearsOfSolitude);
+    library.push_back(OneHundredYearsOfSolitude);*/
 
     //std::cout << library[1].Author;
 
-    lookForISBN(library);
+    //lookForISBN(library);
 
 
 }
