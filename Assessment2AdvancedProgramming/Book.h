@@ -30,7 +30,6 @@ class Library
 {
 public:
 	std::vector<Book> library;
-	bool compare(Book a, Book b);
 	void sortBookData();
 	void displayLibrary();
 	void lookForISBN();

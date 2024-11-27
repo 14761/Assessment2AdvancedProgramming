@@ -44,13 +44,10 @@ Book::Book(const std::string title = "", const std::string author = "", const lo
 }
 
 //Library class methods
-bool compare(Book a, Book b) {
-	return a.ISBN < b.ISBN;
-}
 
 void Library::sortBookData()
 {
-	std::sort(Library::library.begin(), Library::library.end(), compare);
+	std::sort(Library::library.begin(), Library::library.end(), [](const Book& a, const Book& b) {return a.ISBN < b.ISBN; });
 }
 void Library::displayLibrary()
 {
