@@ -9,27 +9,17 @@
 #include <algorithm>
 #pragma warning(disable : 4996)
 
-void lookForISBN(std::vector<Book> lvector);
-void sortBookData(std::vector<Book> sortVector);
-void displayLibrary(std::vector<Book> dvector);
-bool compare(Book& a, Book& b) {
-    return a.ISBN < b.ISBN;
-}
+//void lookForISBN(std::vector<Book> lvector);
+//void sortBookData(std::vector<Book> sortVector, bool compare);
+//void displayLibrary(std::vector<Book> dvector);
+//
+//bool compareByISBN(Book& a, Book& b) {
+//    return a.ISBN < b.ISBN;
+//}
 
 int main()
 {
     std::cout << std::boolalpha;
-
-    //Test book class
-    
-    /*Book principito;
-    principito.displayBookDetails();
-    principito.setBookDtails();
-    principito.displayBookDetails();
-    principito.returnBook();
-    principito.displayBookDetails();
-    principito.borrowBook();
-    principito.displayBookDetails();*/
 
     //Generating books
     Book a1984("1984", "George Orwell", 9781328869333, false);
@@ -39,63 +29,58 @@ int main()
     Book OneHundredYearsOfSolitude("One Hundred Years of Solitude", "Gabriel Garcia Marquez", 9780061120091, false);
 
     //Saving books into vector
-    std::vector<Book> library;
+    //std::vector<Book> library;
+    Library mylibrary;
     
-    library.push_back(a1984);
-    library.push_back(AstrophysicsforPeopleinaHurry);
-    library.push_back(Necronomicon);
-    library.push_back(Oathbringer);
-    library.push_back(OneHundredYearsOfSolitude);
+    mylibrary.addBook(a1984);
+    mylibrary.addBook(Oathbringer);
+    mylibrary.addBook(AstrophysicsforPeopleinaHurry);
+    mylibrary.addBook(Necronomicon);
+    mylibrary.addBook(OneHundredYearsOfSolitude);
 
-    std::cout << library[1].Author;
+    //std::cout << library[1].Author;
 
-    lookForISBN(library);
+    //lookForISBN(library);
 
-    sortBookData(library);
+    /*std::sort(library.begin(), library.end(), compareByISBN);*/
 
+    /*sortBookData(library, compareByISBN);
+
+    displayLibrary(library);*/
+
+    //mylibrary.displayLibrary();
 
 
 }
 
-void lookForISBN(std::vector<Book> lvector) {
-    double isbn;
-    std::cout << "Enter ISBN number (0 for finish program): ";
-    std::cin >> isbn;
-    if (isbn == 0)
-    {
-        std::cout << "Finishing program";
-        return;
-    }
-    for (std::vector<Book>::iterator it = lvector.begin(); it != lvector.end(); ++it)
-    {
-        if (it->ISBN == isbn)
-        {
-            return it->displayBookDetails();
-        }
-    }
-    std::cout << "Book not in library" << std::endl;
-}
+//void lookForISBN(std::vector<Book> lvector) {
+//    long long int isbn;
+//    std::cout << "Enter ISBN number (0 for finish program): ";
+//    std::cin >> isbn;
+//    if (isbn == 0)
+//    {
+//        std::cout << "Finishing program";
+//        return;
+//    }
+//    for (std::vector<Book>::iterator it = lvector.begin(); it != lvector.end(); ++it)
+//    {
+//        if (it->ISBN == isbn)
+//        {
+//            return it->displayBookDetails();
+//        }
+//    }
+//    std::cout << "Book not in library" << std::endl;
+//}
 
-void sortBookData(std::vector<Book> sortVector)
-{
-    std::sort(sortVector.begin(), sortVector.end(), compare);
-}
+//void sortBookData(std::vector<Book> sortVector, bool compare)
+//{
+//    std::sort(sortVector.begin(), sortVector.end(), compare);
+//}
 
-void displayLibrary(std::vector<Book> dvector)
-{
-    for (std::vector<Book>::iterator it = dvector.begin(); it != dvector.end(); ++it)
-    {
-        it->displayBookDetails();
-    }
-}
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+//void displayLibrary(std::vector<Book> dvector)
+//{
+//    for (std::vector<Book>::iterator it = dvector.begin(); it != dvector.end(); ++it)
+//    {
+//        it->displayBookDetails();
+//    }
+//}

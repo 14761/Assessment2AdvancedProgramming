@@ -1,10 +1,12 @@
 #include "Book.h"
 #include <string>
 
+
+//Book class methods
 void Book::setBookDtails() {
 	std::string title;
 	std::string author;
-	double isbn;
+	long long int isbn;
 	time_t dateAdd;
 
 	std::cout << "Enter Title (press enter if don't know): ";
@@ -37,7 +39,46 @@ void Book::returnBook() {
 	Book::Availability = true;
 }
 
-Book::Book(const std::string title = "", const std::string author = "", const double isbn = 0, const bool availability = true) : Title(title), Author(author), ISBN(isbn), Availability(availability) {
+Book::Book(const std::string title = "", const std::string author = "", const long long int isbn = 0, const bool availability = true) : Title(title), Author(author), ISBN(isbn), Availability(availability) {
 	DateAdd = time(NULL);
+}
+
+//Library class methods
+bool compare(Book a, Book b) {
+	return a.ISBN < b.ISBN;
+}
+
+void Library::sortBookData()
+{
+	std::sort(Library::library.begin(), Library::library.end(), compare);
+}
+void Library::displayLibrary()
+{
+	for (std::vector<Book>::iterator it = Library::library.begin(); it != Library::library.end(); ++it)
+	{
+		it->displayBookDetails();
+	}
+}
+void Library::lookForISBN() {
+	long long int isbn;
+	std::cout << "Enter ISBN number (0 for finish program): ";
+	std::cin >> isbn;
+	if (isbn == 0)
+	{
+		std::cout << "Finishing program";
+		return;
+	}
+	for (std::vector<Book>::iterator it = Library::library.begin(); it != Library::library.end(); ++it)
+	{
+		if (it->ISBN == isbn)
+		{
+			return it->displayBookDetails();
+		}
+	}
+	std::cout << "Book not in library" << std::endl;
+}
+
+void Library::addBook(Book book) {
+	Library::library.push_back(book);
 }
 
