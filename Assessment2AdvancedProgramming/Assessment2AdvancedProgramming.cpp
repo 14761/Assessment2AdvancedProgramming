@@ -6,13 +6,20 @@
 #include <vector>
 #include <string>
 #include <ctime>
+#include <algorithm>
+#pragma warning(disable : 4996)
 
 void lookForISBN(std::vector<Book> lvector);
+void sortBookData(std::vector<Book> sortVector);
+void displayLibrary(std::vector<Book> dvector);
+bool compare(Book& a, Book& b) {
+    return a.ISBN < b.ISBN;
+}
 
 int main()
 {
-    std::string isbn;
     std::cout << std::boolalpha;
+
     //Test book class
     
     /*Book principito;
@@ -24,38 +31,37 @@ int main()
     principito.borrowBook();
     principito.displayBookDetails();*/
 
-    Book a1984("1984", "George Orwell", "9781328869333", false);
-    Book AstrophysicsforPeopleinaHurry("Astrophysics for People in a Hurry", "Neil deGrasse Tyson", "9780393609394", true);
-    Book Necronomicon("Necronomicon", "H.P. Lovecraft", "9780575081567", true);
-    Book Oathbringer("Oathbringer", "Brandon Sanderson", "9781250297143", true);
-    Book OneHundredYearsOfSolitude("One Hundred Years of Solitude", "Gabriel Garcia Marquez", "One Hundred Years of Solitude", false);
+    //Generating books
+    Book a1984("1984", "George Orwell", 9781328869333, false);
+    Book AstrophysicsforPeopleinaHurry("Astrophysics for People in a Hurry", "Neil deGrasse Tyson", 9780393609394, true);
+    Book Necronomicon("Necronomicon", "H.P. Lovecraft", 9780575081567, true);
+    Book Oathbringer("Oathbringer", "Brandon Sanderson", 9781250297143, true);
+    Book OneHundredYearsOfSolitude("One Hundred Years of Solitude", "Gabriel Garcia Marquez", 9780061120091, false);
 
-    a1984.displayBookDetails();
-
-    a1984.setBookDtails();
-
-    a1984.displayBookDetails();
-
-    /*std::vector<Book> library;
+    //Saving books into vector
+    std::vector<Book> library;
     
     library.push_back(a1984);
     library.push_back(AstrophysicsforPeopleinaHurry);
     library.push_back(Necronomicon);
     library.push_back(Oathbringer);
-    library.push_back(OneHundredYearsOfSolitude);*/
+    library.push_back(OneHundredYearsOfSolitude);
 
-    //std::cout << library[1].Author;
+    std::cout << library[1].Author;
 
-    //lookForISBN(library);
+    lookForISBN(library);
+
+    sortBookData(library);
+
 
 
 }
 
 void lookForISBN(std::vector<Book> lvector) {
-    std::string isbn;
-    std::cout << "Enter ISBN number: ";
+    double isbn;
+    std::cout << "Enter ISBN number (0 for finish program): ";
     std::cin >> isbn;
-    if (isbn == "0")
+    if (isbn == 0)
     {
         std::cout << "Finishing program";
         return;
@@ -68,6 +74,19 @@ void lookForISBN(std::vector<Book> lvector) {
         }
     }
     std::cout << "Book not in library" << std::endl;
+}
+
+void sortBookData(std::vector<Book> sortVector)
+{
+    std::sort(sortVector.begin(), sortVector.end(), compare);
+}
+
+void displayLibrary(std::vector<Book> dvector)
+{
+    for (std::vector<Book>::iterator it = dvector.begin(); it != dvector.end(); ++it)
+    {
+        it->displayBookDetails();
+    }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

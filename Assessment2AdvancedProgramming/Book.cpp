@@ -4,20 +4,20 @@
 void Book::setBookDtails() {
 	std::string title;
 	std::string author;
-	std::string isbn;
+	double isbn;
 	time_t dateAdd;
 
-	std::cout << "Enter Title: ";
+	std::cout << "Enter Title (press enter if don't know): ";
 	std::getline(std::cin, title);
 	if (title != "") Book::Title = title;
 	std::cout << std::endl;
-	std::cout << "Enter Author: ";
+	std::cout << "Enter Author (press enter if don't know): ";
 	std::getline(std::cin, author);
 	if (author != "") Book::Author = author;
 	std::cout << std::endl;
-	std::cout << "Enter ISBN: ";
+	std::cout << "Enter ISBN (type 0 if don't know): ";
 	std::cin >> isbn;
-	if (isbn != "") Book::ISBN = isbn;
+	if (isbn != 0) Book::ISBN = isbn;
 	std::cout << std::endl;
 	std::cout << "Enter timestamp (type 0 if don't know): ";
 	std::cin >> dateAdd;
@@ -37,9 +37,7 @@ void Book::returnBook() {
 	Book::Availability = true;
 }
 
-Book::Book() {};
-
-Book::Book(const std::string title = "", const std::string author = "", const std::string isbn = "", const bool availability = true) : Title(title), Author(author), ISBN(isbn), Availability(availability) {
+Book::Book(const std::string title = "", const std::string author = "", const double isbn = 0, const bool availability = true) : Title(title), Author(author), ISBN(isbn), Availability(availability) {
 	DateAdd = time(NULL);
 }
 
