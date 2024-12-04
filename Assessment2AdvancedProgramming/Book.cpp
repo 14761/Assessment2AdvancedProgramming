@@ -3,7 +3,7 @@
 
 
 //Book class methods
-void Book::setBookDtails() {
+void Book::setBookDetails() {
 	std::string title;
 	std::string author;
 	long long int isbn;
@@ -38,6 +38,9 @@ void Book::borrowBook() {
 void Book::returnBook() {
 	Book::Availability = true;
 }
+
+// Default constructor using delegation
+Book::Book() : Book("", "", 0, true) {}
 
 Book::Book(const std::string title = "", const std::string author = "", const long long int isbn = 0, const bool availability = true) : Title(title), Author(author), ISBN(isbn), Availability(availability) {
 	DateAdd = time(NULL);

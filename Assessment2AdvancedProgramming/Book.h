@@ -9,6 +9,9 @@
 class Book
 {
 public:
+	// Default constructor
+	Book();
+
 	Book(const std::string title, const std::string author, const long long int isbn, const bool availability);
 
 	std::string Title;
@@ -17,7 +20,7 @@ public:
 	bool Availability;
 	time_t DateAdd;
 
-	void setBookDtails();
+	void setBookDetails();
 	void displayBookDetails();
 	void borrowBook();
 	void returnBook();
